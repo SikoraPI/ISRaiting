@@ -1,0 +1,27 @@
+﻿<Window x:Class="StudentList.Autorization"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:StudentList"
+        mc:Ignorable="d" xmlns:wpf="http://materialdesigninxaml.net/winfx/xaml/themes"
+        Title="Авторизация" ResizeMode="NoResize" Height="260" Width="370px">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20px"></RowDefinition>
+            <RowDefinition Height="54px"></RowDefinition>
+            <RowDefinition Height="8px"></RowDefinition>
+            <RowDefinition Height="54px"></RowDefinition>
+            <RowDefinition Height="4px"></RowDefinition>
+            <RowDefinition Height="19px"></RowDefinition>
+            <RowDefinition Height="11px"></RowDefinition>
+            <RowDefinition Height="50px"></RowDefinition>
+        </Grid.RowDefinitions>
+        <TextBox Width="292px" x:Name="Login" wpf:HintAssist.HintOpacity="1" wpf:HintAssist.Hint="Логин" wpf:HintAssist.IsFloating="True"  Grid.Row="1" Margin="0,5px,0,0" Height="35px" Padding="4"  BorderBrush="#1C1E21" ></TextBox>
+
+        <PasswordBox x:Name="Password"  Width="292px" wpf:HintAssist.HintOpacity="1" wpf:HintAssist.Hint="Пароль" wpf:HintAssist.IsFloating="True"  Grid.Row="3" Margin="0,5px,0,0" Height="35px" Padding="4"  BorderBrush="#1C1E21" ></PasswordBox>
+
+
+        <Button  Width="158px" Grid.Row="7" Height="30px"  x:Name="Auth" Content="Войти" Click="AuthClick"></Button>
+    </Grid>
+</Window>

@@ -1,0 +1,21 @@
+﻿<UserControl x:Class="StudentList.View.Group.GroupAdd"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"  Background="White"
+             xmlns:local="clr-namespace:StudentList.View.Group" xmlns:wpf="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:ViewModel="clr-namespace:StudentList.ViewModel.Group"
+             mc:Ignorable="d" d:DataContext="{d:DesignInstance Type=ViewModel:GroupViewModel}"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <ResourceDictionary Source="/Resources/Dictionary.xaml"/>
+    </UserControl.Resources>
+    <Grid>
+        <GroupBox Margin="50,15,50,15" Header="Добавить новую группу">
+            <StackPanel Margin="50,40,50,15">
+                <TextBox wpf:HintAssist.Hint="Наименование группы" Text="{Binding NewStudyGroup.Name}" ></TextBox>
+                <Button Margin="5,15,5,0" HorizontalAlignment="Center" Width="150" Content="Добавить" Command="{Binding AddGroup}"></Button>
+            </StackPanel>
+        </GroupBox>
+    </Grid>
+</UserControl>

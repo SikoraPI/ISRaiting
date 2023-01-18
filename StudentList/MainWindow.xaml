@@ -1,0 +1,53 @@
+﻿<Window x:Class="StudentList.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:StudentList"
+        mc:Ignorable="d"
+        xmlns:ViewModel="clr-namespace:StudentList.ViewModel"
+             d:DataContext="{d:DesignInstance Type=ViewModel:MainViewModel}"
+        Title="ИС Студент" Height="650" Width="1000">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="55"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Border BorderBrush="{StaticResource PrimaryHueDarkBrush}" Background="{StaticResource  PrimaryHueMidBrush}"  BorderThickness="0,0,0,3">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition Width="150" ></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+            
+            <Menu   Cursor="Hand" >
+                    <MenuItem  Style="{StaticResource NavButton}"  Header="Файл" Height="52"  Margin="3,0,3,0">
+                        <MenuItem Style="{StaticResource MenuItemSecond}" Click="change_Click" x:Name="change" Header="Сменить пользователя" ></MenuItem>
+                        <MenuItem Style="{StaticResource MenuItemSecond}" Click="exit_Click" x:Name="exit" Header="Выход из программы"></MenuItem>
+                    </MenuItem>
+                <MenuItem Header="Студенты" Style="{StaticResource NavButton}"  Tag="1"   Height="52"  Margin="3,0,3,0" >
+                        <MenuItem  Header="Список cтудентов" Style="{StaticResource MenuItemSecond}" Command="{Binding OpenPage}"  CommandParameter="StudentTable" ></MenuItem>
+                        <MenuItem Header="Добавить студента"  Style="{StaticResource MenuItemSecond}" Command="{Binding OpenPage}"   CommandParameter="AddStudent" ></MenuItem>
+                </MenuItem>
+                    <MenuItem Header="Учебные группы" Style="{StaticResource NavButton}"  Tag="2"   Height="52"  Margin="3,0,3,0" >
+                        <MenuItem Header="Список групп"   Style="{StaticResource MenuItemSecond}" Command="{Binding OpenPage}"  CommandParameter="GroupTable" ></MenuItem>
+                        <MenuItem  Style="{StaticResource MenuItemSecond}" Header="Добавить группу" Command="{Binding OpenPage}"   CommandParameter="AddGroup" ></MenuItem>
+                </MenuItem>
+                    <MenuItem Header="Предметы" Style="{StaticResource NavButton}"  Tag="3"    Height="52"  Margin="3,0,3,0" >
+                        <MenuItem Header="Список предметов"  Style="{StaticResource MenuItemSecond}" Command="{Binding OpenPage}"  CommandParameter="TableSubject" ></MenuItem>
+                        <MenuItem Header="Добавить предмет"  Style="{StaticResource MenuItemSecond}" Command="{Binding OpenPage}"   CommandParameter="AddSubject" ></MenuItem>
+                    </MenuItem>
+                    <MenuItem Header="Пользователи" Style="{StaticResource NavButton}" Visibility="{Binding ThisUser.IsAdmin, Converter={StaticResource BooleanToVisibilityConverter}}"  Tag="4"  Height="52"  Margin="3,0,3,0" >
+                        <MenuItem Header="Список пользователей"   Style="{StaticResource MenuItemSecond}" Command="{Binding OpenPage}" IsEnabled="{Binding ThisUser.IsAdmin}"  CommandParameter="UserTable"></MenuItem>
+                        <MenuItem Header="Добавить пользователя"  Style="{StaticResource MenuItemSecond}"   Command="{Binding OpenPage}" CommandParameter="AddUser"></MenuItem>
+                </MenuItem>
+
+                </Menu>
+                <Image Grid.Column="1" Height="55" Width="150" Source="/Image/image.png" />
+
+            </Grid>
+        </Border>
+        <ContentControl Grid.Row="1" x:Name="Content" Content="{Binding MainControl}"></ContentControl>
+    </Grid>
+    
+</Window>

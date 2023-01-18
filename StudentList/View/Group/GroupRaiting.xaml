@@ -1,0 +1,25 @@
+﻿<UserControl x:Class="StudentList.View.Group.GroupRaiting"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:StudentList.View.Group"
+             xmlns:winformchart="clr-namespace:System.Windows.Forms.DataVisualization.Charting;assembly=System.Windows.Forms.DataVisualization"
+xmlns:wfi="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration"
+xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
+             mc:Ignorable="d" xmlns:wpf="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:i="http://schemas.microsoft.com/xaml/behaviors" xmlns:ViewModel="clr-namespace:StudentList.ViewModel.Group"
+             d:DataContext="{d:DesignInstance Type=ViewModel:GroupViewModel}"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <ToolBar>
+            <Button Content="Назад" Command="{Binding Back}"></Button>
+        </ToolBar>
+        <wfi:WindowsFormsHost Grid.Row="1" Name="form">
+            <winformchart:Chart x:Name="chart"  ></winformchart:Chart>
+        </wfi:WindowsFormsHost>
+    </Grid>
+</UserControl>

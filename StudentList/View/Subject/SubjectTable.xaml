@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="StudentList.View.Subject.SubjectTable"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:StudentList.View.Subject"
+             mc:Ignorable="d" xmlns:ViewModel="clr-namespace:StudentList.ViewModel.Subject"
+             d:DataContext="{d:DesignInstance Type=ViewModel:SubjectViewModel}"
+             xmlns:wpf="http://materialdesigninxaml.net/winfx/xaml/themes"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <ResourceDictionary Source="/Resources/Dictionary.xaml"/>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+        </Grid.RowDefinitions>
+        <ToolBar>
+            <Button Padding="5,0,5,0" Height="40" Content="Удалить предмет" Command="{Binding DeleteSubject}" CommandParameter="{Binding ElementName=study_sub, Path=SelectedItem}"></Button>
+        </ToolBar>
+        <StackPanel Grid.Row="1" Orientation="Horizontal">
+            <TextBox Margin="10" Width="150" wpf:HintAssist.Hint="Предмет" Text="{Binding SubjectFind}"></TextBox>
+            <Button Margin="10" Width="95" Content="Поиск" Command="{Binding FindSubject}"></Button>
+        </StackPanel>
+        <DataGrid Grid.Row="2" AutoGenerateColumns="False" CanUserAddRows="False" x:Name="study_sub" ItemsSource="{Binding StudySubject}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Наименование предмета" Width="1*" Binding="{Binding Name}"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Width="150" Grid.Row="3" Content="Сохранить" Command="{Binding UpdateSubject}"></Button>
+    </Grid>
+</UserControl>
